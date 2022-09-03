@@ -24,6 +24,7 @@ struct args
 
 int _putchar(char c);
 ssize_t input(char **lineptr, size_t *n, FILE *stream);
-char **split(char *str, const char *delim, struct args *argp);
+char **_split(char *str, const char *delim, struct args *argp);
+char **split(char *str, const char *delim);
 
 #endif

@@ -45,14 +45,14 @@ ssize_t input(char **lineptr, size_t *n, FILE *stream)
 }
 
 /**
- * split - Function that tokenizes input into an array
+ * _split - Function that tokenizes input into an array
  *
  * @str: String to be tokenized.
  * @delim: The delimiter.
  * @argp: Pointer to arg of type struct args.
  * Return: Argument vector.
  */
-char **split(char *str, const char *delim, struct args *argp)
+char **_split(char *str, const char *delim, struct args *argp)
 {
 	int ac;
 	char **av;
@@ -112,7 +112,7 @@ int main(void)
 	else
 		printf("%s\n", string);
 
-	av = split(string, &delim, &arg);
+	av = _split(string, &delim, &arg);
 	ac = argp->ac;
 
 	while (ac)
