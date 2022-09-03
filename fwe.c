@@ -10,7 +10,6 @@ int main(void)
 	pid_t process_id;
 	pid_t child_process_id;
 	int status;
-	int i = 1;
 
 	char *argv[] = {"/bin/ls", "-l", "/tmp", NULL};
 	char *env_args[] = {"PATH=/bin", (char *)0};
