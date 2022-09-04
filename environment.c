@@ -59,3 +59,22 @@ char *_getenv(const char *name)
 	free(value);
 	return ("\0");
 }
+
+/**
+ * print_path - Function that prints evey directory in the PATH variable.
+ */
+void print_path(void)
+{
+	unsigned int i;
+	char *PATH = _getenv("PATH");
+
+	i = 0;
+	while (PATH[i] != '\0')
+	{
+		if (PATH[i] == ':')
+			printf("\n");
+		else
+			printf("%c", PATH[i]);
+		i++;
+	}
+}

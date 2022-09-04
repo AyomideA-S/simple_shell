@@ -27,6 +27,7 @@ extern char **environ;
 
 int lookup(const char *key, char *entry);
 char *_getenv(const char *name);
+void print_path(void);
 
 int _putchar(char c);
 ssize_t input(char **lineptr, size_t *n, FILE *stream);
