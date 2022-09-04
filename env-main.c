@@ -11,7 +11,6 @@
 int main(int ac, char **av, char **env)
 {
 	unsigned int i;
-	extern char **environ;
 
 	i = 0;
 	while (environ[i] != NULL)

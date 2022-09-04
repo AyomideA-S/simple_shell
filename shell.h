@@ -1,6 +1,7 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
 
+#include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
@@ -21,6 +22,8 @@ struct args
 	int ac;
 	char **av;
 };
+
+extern char **environ;
 
 int _putchar(char c);
 ssize_t input(char **lineptr, size_t *n, FILE *stream);
