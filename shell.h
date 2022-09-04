@@ -12,7 +12,7 @@
 #include <limits.h>
 
 /**
- * struct args - Struct that stores data on passed arguments
+ * struct args - Struct that stores data on passed arguments.
  * @ac: Argument Count
  * @av: Argument Vector
  * Description: Struct called "args" that stores argument count and vectors
@@ -24,6 +24,9 @@ struct args
 };
 
 extern char **environ;
+
+int lookup(const char *key, char *entry);
+char *_getenv(const char *name);
 
 int _putchar(char c);
 ssize_t input(char **lineptr, size_t *n, FILE *stream);
