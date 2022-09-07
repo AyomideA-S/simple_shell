@@ -23,11 +23,30 @@ struct args
 	char **av;
 };
 
+/**
+ * struct path_s - Singly linked list of PATH directories
+ * @directory: Directory
+ * @length: Length of the directory
+ * @next: Pointer to the next node
+ *
+ * Description: Singly linked list node structure
+ *
+ */
+typedef struct path_s
+{
+	char *directory;
+	unsigned int length;
+	struct path_s *next;
+} paths;
+
 extern char **environ;
 
 int lookup(const char *key, char *entry);
 char *_getenv(const char *name);
 void print_path(void);
+
+char *extract_path(char *PATH, unsigned int *i, unsigned int *length);
+void link_path(void);
 
 int _putchar(char c);
 ssize_t input(char **lineptr, size_t *n, FILE *stream);

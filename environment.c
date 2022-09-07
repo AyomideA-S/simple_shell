@@ -9,9 +9,8 @@
  */
 int lookup(const char *key, char *entry)
 {
-	unsigned int c;
+	unsigned int c = 0;
 
-	c = 0;
 	while (key[c] != '\0')
 	{
 		if (key[c] == entry[c])
@@ -30,12 +29,10 @@ int lookup(const char *key, char *entry)
  */
 char *_getenv(const char *name)
 {
-	unsigned int i, j;
+	unsigned int i = 0, j = 0;
 	int outcome;
-	char *value = malloc(255 * sizeof(char));
+	char *value = (char *)malloc(sizeof(char));
 
-	i = 0;
-	j = 0;
 	while (environ[i] != NULL)
 	{
 		outcome = lookup(name, environ[i]);
@@ -43,15 +40,11 @@ char *_getenv(const char *name)
 		{
 			while (environ[i][++outcome] != '\0')
 			{
-				*value = environ[i][outcome];
-				value++;
+				value = (char *)realloc(value, sizeof(char) * (j + 1));
+				value[j] = environ[i][outcome];
 				j++;
 			}
-			while (j > 0)
-			{
-				value--;
-				j--;
-			}
+			value[j] = '\0';
 			return (value);
 		}
 		i++;
@@ -65,10 +58,9 @@ char *_getenv(const char *name)
  */
 void print_path(void)
 {
-	unsigned int i;
+	unsigned int i = 0;
 	char *PATH = _getenv("PATH");
 
-	i = 0;
 	while (PATH[i] != '\0')
 	{
 		if (PATH[i] == ':')
