@@ -5,7 +5,7 @@
  *
  * @key: Entry to search for in a dictionary.
  * @entry: Specific entry from a dictionary to be comparedto the provided key.
- * Return: 1 if key is found in the entry else -1.
+ * Return: Length of the key if found in the entry else -1.
  */
 int lookup(const char *key, char *entry)
 {
@@ -69,4 +69,32 @@ void print_path(void)
 			printf("%c", PATH[i]);
 		i++;
 	}
+}
+
+int _setenv(const char *name, const char *value, int overwrite)
+{
+	unsigned int i = 0, j = 0;
+	int outcome;
+
+	while (environ[i] != NULL)
+	{
+		outcome = lookup(name, environ[i]);
+		if (outcome != -1)
+		{
+			if (overwrite != 0)
+			{
+				while (environ[i][++outcome] != '\0')
+				{
+					value = (char *)realloc(value, sizeof(char) * (j + 1));
+					environ[i][outcome] = value[j];
+					j++;
+				}
+				value[j] = '\0';
+			}
+			
+		}
+		i++;
+	}
+	free(value);
+	return (0);
 }
